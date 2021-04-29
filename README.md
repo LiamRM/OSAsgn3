@@ -15,17 +15,13 @@ Submitted: April 29th, 2021
 - Now, in 3 separate ttys type:
 	 `./saladmaker -m [salmkrtime] -s [shared memory id]`
 - The saladmakers will output text to indicate they are running. Wait until all salads are made to view the final runtime statistics output in the Chef executable!
-
 **Note**: This program will only run on UNIX-based systems, meaning Mac or Linux. Windows users will have to install a [Ubuntu subsystem](https://ubuntu.com/wsl) or can follow [this guide](https://itsfoss.com/install-linux-in-virtualbox/) to install a Linux Virtual Machine.
-![Runtime Screenshot](https://github.com/[LiamRM]/[OSAsgn3]/blob/[main]/image.jpg?raw=true)
----
+![Runtime Screenshot](https://github.com/[LiamRM]/[OSAsgn3]/blob/[main]/Screenshot from 2021-04-29 21-50-05.png?raw=true)
 
 ## 🎨 GENERAL DESIGN DECISIONS
 **Salad making**
 For my saladmaking scheme, I decided every salad has EXACTLY 80g tomatoes, 50g of peppers, and 30g of onions. The average ingredient also weighs this exact amount, with a variance of (0.8 * weight) - (1.2 * weight).
 Each saladmaker also stockpiles ingredients. Meaning, when a saladmaker makes a salad, it subtracts 80g tomatoes, 50g peppers, and 30g onions from its available ingredients and saves the rest for the next salad.
-
----
 
 ## 🎨 SHARED MEMORY DESIGN DECISIONS
 
@@ -45,8 +41,6 @@ To summarize, in this program:
 	- if vegetable[] boolean with this index is "true", it has already been chosen. Generate another number.
 	- else if vegetable[] boolean with this index is "false", it has not been chosen yet. Choose this vegetable and set this boolean to "true".
 
----
-
 ## 🎨 SEMAPHORE DESIGN DECISIONS
 - There are 2 semaphores in shared memory: 
 	vegSelection, which is used to ensure only 1 process at a time may select a vegetable.
@@ -61,8 +55,6 @@ So, I chose to implement 3 booleans in shared memory as follows:
     	bool saladmaker3;
 If a bool is "true", it means it has received both the vegetables it requires from the Chef process. If it is "false", the saladmaker is blocked in a while loop.
 
----
-
 ## 🎨 PARALLEL TIMING DESIGN DECISIONS
 To calculate when saladmakers are working in parallel, I:
 - increment a shared memory int variable numSaladmakersRunning by 1 every time a saladmaker starts making salad 
@@ -70,7 +62,7 @@ To calculate when saladmakers are working in parallel, I:
 - whenever a saladmaker finishes making salad, decrement numSaladmakersRunning by 1, and if there is only 1 saladmaker running, record a timer value, saving the value in a shared memory long variable timerEndVal.
 - Save the range from timerStartVal to timerEndVal to a file called "parallel.txt". This indicates the range in which 2 or more processes were running in parallel.
 - Read from this file in the Chef process when outputting the final statistics. Voila.
----
+
 ## ⚡ LIMITATIONS/INACCURACIES
 I used the sleep() function to simulate the saladmaker "working" on a salad.
 However, with sleep() a process only sleeps for an INT amount of time, not double.

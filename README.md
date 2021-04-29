@@ -15,7 +15,9 @@ Submitted: April 29th, 2021
 - Now, in 3 separate ttys type:
 	 `./saladmaker -m [salmkrtime] -s [shared memory id]`
 - The saladmakers will output text to indicate they are running. Wait until all salads are made to view the final runtime statistics output in the Chef executable!
+
 **Note**: This program will only run on UNIX-based systems, meaning Mac or Linux. Windows users will have to install a [Ubuntu subsystem](https://ubuntu.com/wsl) or can follow [this guide](https://itsfoss.com/install-linux-in-virtualbox/) to install a Linux Virtual Machine.
+![Runtime Screenshot](https://github.com/[LiamRM]/[OSAsgn3]/blob/[main]/image.jpg?raw=true)
 ---
 
 ## 🎨 GENERAL DESIGN DECISIONS

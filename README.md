@@ -2,6 +2,10 @@
 NYUAD Operating Systems - Programming Assignment 3
 Submitted: April 29th, 2021
 
+## 🚀 WHAT I LEARNED
+- Synchronization with POSIX Semaphores, that allow for saladmaker processes to coordinate their work via appropriate P() and V() primitives
+- Creating, allocating and de-allocating Shared Memory between processes, so that each process may conveniently access and change main-memory resident variables
+
 ## ⚙️ HOW TO RUN THE PROGRAM
 - Navigate on a UNIX-based terminal (Terminal on Mac, Ubuntu subsystem on Windows) to the folder containing the .cpp files
 - type `make` to compile and create an executable file
@@ -11,7 +15,7 @@ Submitted: April 29th, 2021
 - Now, in 3 separate ttys type:
 	 `./saladmaker -m [salmkrtime] -s [shared memory id]`
 - The saladmakers will output text to indicate they are running. Wait until all salads are made to view the final runtime statistics output in the Chef executable!
-
+**Note**: This program will only run on UNIX-based systems, meaning Mac or Linux. Windows users will have to install a [Ubuntu subsystem](https://ubuntu.com/wsl) or can follow [this guide](https://itsfoss.com/install-linux-in-virtualbox/) to install a Linux Virtual Machine.
 ---
 
 ## 🎨 GENERAL DESIGN DECISIONS

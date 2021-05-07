@@ -64,8 +64,5 @@ To calculate when saladmakers are working in parallel, I:
 - Read from this file in the Chef process when outputting the final statistics. Voila.
 
 ## ⚡ LIMITATIONS/INACCURACIES
-I used the sleep() function to simulate the saladmaker "working" on a salad.
-However, with sleep() a process only sleeps for an INT amount of time, not double.
-I record the correct time "working" on salads to shared memory via the variable 'timeworking' of type double.
-When you compare the timestamps in each process' temporal log on the other hand, the time between starting a salad and finishing a salad is a difference of WHOLE seconds, not fractions of seconds.
-As a result, the time calculated for when a saladmaker is working may not 100% accurately represent the reality (fractions of seconds are ignored in reality). 
+- I used the sleep() function to simulate the saladmaker "working" on a salad. However, with sleep() a process only sleeps for an INT amount of time, not double. I record the correct time "working" on salads to shared memory via the variable 'timeworking' of type double. When you compare the timestamps in each process' temporal log on the other hand, the time between starting a salad and finishing a salad is a difference of WHOLE seconds, not fractions of seconds. As a result, the time calculated for when a saladmaker is working **may not 100% accurately represent the reality** (fractions of seconds are ignored in reality). 
+- My solution also is subject to **busy waiting**, meaning the CPU expends cycles stuck in a while loop, doing no useful work. If I were to improve this solution, I would implement semaphores for each saladmaker so that the saladmaker is **suspended** while waiting and no longer wastes CPU cycles.

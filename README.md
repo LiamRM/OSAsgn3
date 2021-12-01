@@ -1,6 +1,5 @@
-# OSAsgn3
-NYUAD Operating Systems - Programming Assignment 3
-Submitted: April 29th, 2021
+# Saladmaker Synchronization
+Date created: April 2021
 
 ## 🚀 WHAT I LEARNED
 - Synchronization with POSIX Semaphores, that allow for saladmaker processes to coordinate their work via appropriate P() and V() primitives
